@@ -1,13 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view>
+    <button class="btnRect" bindtap="Scan" >扫码打卡</button>
+<text>Tips:打卡前需要连接打卡点的wifi，并开启手机位置服务</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="info">
+    <text>WIFI:{{wifi}}</text>
+    <text>打卡结果:{{location}}</text>
   </view>
 </view>

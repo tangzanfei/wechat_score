@@ -1,1 +1,29 @@
 /* pages/mine/index.wxss */
+@import '../common/index.wxss';
+.userinfo {
+
+  background-color: cadetblue;
+  padding:30rpx;
+}
+
+.userinfo-avatar {
+  display: block;
+  margin: 0 auto;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10%;
+  border: 2px solid #fff;
+}
+
+.userinfo-nickname {
+  display: block;
+  color: #fff;
+  font-size: 22px;
+  line-height: 2.4;
+  text-align: center;
+}
+.userscore {
+  display: block;
+  font-size: 60px;
+  text-align: center;
+}

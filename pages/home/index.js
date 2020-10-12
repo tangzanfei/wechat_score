@@ -7,7 +7,9 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    wifi:'无',
+    location:'组织部主题党日打卡点'
   },
   //事件处理函数
   bindViewTap: function() {
@@ -49,6 +51,11 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  Scan:function(){
+    wx.scanCode({
+      onlyFromCamera: true,
     })
   }
 })
