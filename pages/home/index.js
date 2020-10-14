@@ -8,8 +8,12 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    wifi:'无',
-    location:'组织部主题党日打卡点'
+    wifissid:'未检测到wifi',
+    wifiBssid:'',
+    qrcode:'',
+    checkResult:'打卡成功',
+    checkLocation:'组织部主题党日打卡点',
+    checkTime:'2020年10月14日15:43:16',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -45,6 +49,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -53,9 +58,46 @@ Page({
       hasUserInfo: true
     })
   },
+
+// 扫码打卡
   Scan:function(){
+    var that = this;
     wx.scanCode({
       onlyFromCamera: true,
-    })
-  }
+      success (res) {
+        console.log(res);
+        that.setData({
+          qrcode: res.result,
+        });
+        // that.checkIn();
+      }
+    });
+  },
+
+// 更新wifi
+getWifiInfo:function(){
+  var that = this;
+  wx.startWifi({
+    success(res) {
+      console.log(res.errMsg, 'wifi初始化成功')
+    },
+    fail: function(res){
+      console.log(res.errMsg, 'wifi初始化失败')
+    }
+  });
+  wx.getConnectedWifi({
+    success: function(e){
+      wx.showToast({
+        title: '获取成功',
+        icon: 'success'
+      });
+      console.log(e.wifi.BSSID);
+      that.setData({
+        wifissid: e.wifi.SSID,
+        wifiBssid: e.wifi.BSSID
+      })
+    },
+    fail: res => console.log(res)
+  })
+},
 })
