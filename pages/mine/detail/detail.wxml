@@ -1,2 +1,67 @@
 <!--pages/mine/detail/detail.wxml-->
-<text>pages/mine/detail/detail.wxml</text>
+<view class="page">
+  <!-- 总数 -->
+  <view class="li" bindtap='changeToggle'>
+    <view class="left">总数</view>
+    <view class="right gray">{{list01.length+list02.length+list03.length}}</view>
+  </view>
+
+  <!--分类 -->
+  <view class="li" data-index="0" bindtap='changeToggle'>
+    <view class="left">日常履职</view>
+    <view class="right">{{list01.length}}<text class="iconfont{{selectedFlag[0]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+    </view>
+  </view>
+  <view hidden="{{!selectedFlag[0]}}">
+    <block wx:for="{{list01}}" wx:for-item="item" wx:for-index="index">
+      <view class="li bg-gray">
+        <view>{{item.item_id}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class="li" data-index="1" bindtap='changeToggle'>
+    <view class="left">志愿服务</view>
+    <view class="right">{{list02.length}}
+      <text class="{{selectedFlag[1]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+    </view>
+  </view>
+  <view hidden="{{!selectedFlag[1]}}">
+    <block wx:for="{{list02}}" wx:for-item="item" wx:for-index="index">
+      <view class="li bg-gray">
+        <view>{{item.item_id}}</view>
+
+      </view>
+    </block>
+  </view>
+
+  <view class="li" data-index="2" bindtap='changeToggle'>
+    <view class="left">加分项</view>
+    <view class="right red">{{list03.length}}
+      <text class="iconfont {{selectedFlag[2]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+    </view>
+  </view>
+  <view hidden="{{!selectedFlag[2]}}">
+    <block wx:for="{{list03}}" wx:for-item="item" wx:for-index="index">
+      <view class="li bg-gray">
+        <view>{{item.item_id}}</view>
+      </view>
+    </block>
+  </view>
+
+
+  <!-- <view class="li" data-index="3" bindtap='changeToggle'>
+    <view class="left">其他</view>
+    <view class="right red">3
+      <text class="iconfont {{selectedFlag[3]?'icon-shangjiantou':'icon-xiala'}}"> </text>
+    </view>
+  </view>
+  <view hidden="{{!selectedFlag[3]}}">
+    <block wx:for="{{list04}}" wx:for-item="item" wx:for-index="index">
+      <view class="li bg-gray">
+        <view>展开4</view>
+        <view class="red">展开4右边</view>
+      </view>
+    </block>
+  </view> -->
+</view>

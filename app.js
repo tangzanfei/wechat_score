@@ -33,6 +33,9 @@ App({
       }
     })
   },
+  userInfoReadyCallback:function(res){
+console.log(res);
+  },
   globalData: {
     userInfo: null
   }
