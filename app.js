@@ -10,6 +10,17 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res);
+      //   wx.request({
+      //     url: app.globalData.url+'Login/PostCode?code='+res.code,
+      //     type: 'POST',
+      //     success:function(result){
+      //       if(result.code==0){
+      //         app.globalData.openIdKey=result.openIdKey;
+      //         app.globalData.sessionKey=result.sessionKey;
+      //       }
+      //   }
+      // })
       }
     })
     // 获取用户信息
@@ -37,6 +48,9 @@ App({
 console.log(res);
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    url: 'https://localhost:44361/api/',
+    openIdKey:'',
+    sessionKey:'',
   }
 })
