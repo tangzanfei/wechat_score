@@ -11,16 +11,22 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res);
-      //   wx.request({
-      //     url: app.globalData.url+'Login/PostCode?code='+res.code,
-      //     type: 'POST',
-      //     success:function(result){
-      //       if(result.code==0){
-      //         app.globalData.openIdKey=result.openIdKey;
-      //         app.globalData.sessionKey=result.sessionKey;
-      //       }
-      //   }
-      // })
+        this.globalData.code=res.code;
+        var url=this.globalData.url+'Login/PostCode?code='+res.code;
+        console.log(url);
+        wx.request({
+          url: url,
+          method: 'POST',
+          success:function(result){
+            if(result.code==0){
+              this.globalData.openIdKey=result.openIdKey;
+              this.globalData.sessionKey=result.sessionKey;
+            }
+        },
+        fail:function(re){
+          console.log(re);
+        }
+      })
       }
     })
     // 获取用户信息
@@ -44,12 +50,11 @@ App({
       }
     })
   },
-  userInfoReadyCallback:function(res){
-console.log(res);
-  },
+
   globalData: {
     userInfo: null,
-    url: 'https://localhost:44361/api/',
+    url: 'http://192.168.0.100/api/',
+    code:'',
     openIdKey:'',
     sessionKey:'',
   }
