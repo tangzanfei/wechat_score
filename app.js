@@ -18,9 +18,10 @@ App({
           url: url,
           method: 'POST',
           success:function(result){
-            if(result.code==0){
-              this.globalData.openIdKey=result.openIdKey;
-              this.globalData.sessionKey=result.sessionKey;
+            var resultdata=result.data;
+            if(resultdata.Code==0){
+              this.globalData.openIdKey=resultdata.Data.OpenIdKey;
+              this.globalData.sessionKey=resultdata.Data.SessionKey;
             }
         },
         fail:function(re){
@@ -53,7 +54,8 @@ App({
 
   globalData: {
     userInfo: null,
-    url: 'http://192.168.0.100/api/',
+    // url: 'http://192.168.0.100/api/',
+    url: 'https://partyscore.tangzanfei.cn/api/',
     code:'',
     openIdKey:'',
     sessionKey:'',
