@@ -1,4 +1,6 @@
 // pages/mine/detail/detail.js
+//获取应用实例
+const app = getApp()
 Page({
 
   /**
@@ -12,14 +14,19 @@ Page({
       { item_id: "9月3日 凯旋城 +10" }, { item_id: "9月30日 翡翠湾社区 +10" },
     ],
     list03: [
-      { item_id: "9月10日 郴州日报投稿 +10" }, 
+      { item_id: "9月10日 郴州日报投稿郴州日报投稿郴州日投稿郴州日报投稿郴州日报投稿 +10" }, 
     ],
     list04: [
       { item_id: 11 }, { item_id: 11 }, { item_id: 11 }
     ],
 
+    totalScore:60,
+    BaScore:30,
+    usualScore:20,
+    bonusScore:10,
   // 展开折叠
     selectedFlag: [false, false, false, false],
+
   },
    // 展开折叠选择  
    changeToggle:function(e){
@@ -34,6 +41,27 @@ Page({
       selectedFlag: this.data.selectedFlag
     })
   },
+
+
+  GetUsualScoreData:function(){
+    var url=app.globalData.url+'score/GetThisMounthSignData?sessionkey='+app.globalData.sessionKey;
+    console.log(url);
+    wx.request({
+      url: url,
+      method: 'GET',
+      success:function(result){
+        var resultdata=result.data;
+        // if(resultdata.Code==0){
+        //   app.globalData.openIdKey=resultdata.Data.OpenIdKey;
+        //   app.globalData.sessionKey=resultdata.Data.SessionKey;
+        // }
+    },
+    fail:function(re){
+      console.log(re);
+    }
+  });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -45,7 +73,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this;
+    that.GetUsualScoreData();
   },
 
   /**

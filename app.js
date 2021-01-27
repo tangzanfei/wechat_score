@@ -9,6 +9,7 @@ App({
     // 登录
     wx.login({
       success: res => {
+        var that = this;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         console.log(res);
         this.globalData.code=res.code;
@@ -20,8 +21,8 @@ App({
           success:function(result){
             var resultdata=result.data;
             if(resultdata.Code==0){
-              this.globalData.openIdKey=resultdata.Data.OpenIdKey;
-              this.globalData.sessionKey=resultdata.Data.SessionKey;
+              that.globalData.openIdKey=resultdata.Data.OpenIdKey;
+              that.globalData.sessionKey=resultdata.Data.SessionKey;
             }
         },
         fail:function(re){
