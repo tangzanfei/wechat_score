@@ -1,6 +1,7 @@
 // pages/mine/detail/detail.js
 //获取应用实例
 const app = getApp()
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -42,8 +43,8 @@ Page({
     })
   },
 
-
   GetUsualScoreData:function(){
+    var _this=this;
     var url=app.globalData.url+'score/GetThisMounthSignData?sessionkey='+app.globalData.sessionKey;
     console.log(url);
     wx.request({
@@ -51,16 +52,52 @@ Page({
       method: 'GET',
       success:function(result){
         var resultdata=result.data;
-        // if(resultdata.Code==0){
-        //   app.globalData.openIdKey=resultdata.Data.OpenIdKey;
-        //   app.globalData.sessionKey=resultdata.Data.SessionKey;
-        // }
+        if(resultdata.Code==0){
+          var list=resultdata.Data;
+          var datalist=[];
+          for (let index = 0; index < list.length; index++) {
+            const data = list[index];
+            let  date = util.formatTime(data.CheckTime);
+            // dateFormat(data.CheckTime,"yyyy-mm-dd HH:MM:ss");
+            var item={ item_id: date +" "+ data.CheckPoint+" +10" };
+            datalist.push(item);
+          }
+          _this.setData({list02:datalist});
+          _this.RefreshScore();
+        }
     },
     fail:function(re){
       console.log(re);
     }
   });
   },
+
+  RefreshScore:function(){
+    var _this=this;
+    var s,s_1,s_2,s_3=0;
+    s_1=_this.data.list01.length*10;
+    s_2=_this.data.list02.length*10;
+    s_3=_this.data.list03.length*10;
+    if (s_1>60) {
+      s_1=60;
+    }
+    if (s_2>20) {
+      s_2=20;
+    }
+    if (s_3>20) {
+      s_3=20;
+    }
+    s=60-s_1;//日常履职做减法，缺签一次－10分
+    s+=s_2+s_3;
+    _this.setData({
+      totalScore:s,
+      BaScore:60-s_1,
+      usualScore:s_2,
+      bonusScore:s_3
+    });
+
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
