@@ -1,6 +1,9 @@
 {
   "pages":[
     "pages/home/index",
+    "pages/home/Scan/index",
+    "pages/home/Wifi/index",
+    "pages/home/LaunchAction/index",
     "pages/mine/index",
     "pages/mine/detail/detail",
     "pages/mine/addScore/addScore",

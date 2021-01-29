@@ -1,44 +1,39 @@
 /**index.wxss**/
 
+.ImgRect {
+  height: 100rpx;
+  width: 100rpx;
+}
+
 .btnRect {
-  height: 120px;
-  width: 120px;
+  height: 150rpx;
+  width: 150rpx;
 }
 
-.tips {
-  margin: 10px;
-  padding: 10px;
-  width: 70%;
-  font-size: 15px;
-  border-style: solid;
-  border-color: silver;
-  border-width: 1px;
+.plate {
+  display: flex;
+  margin: 10rpx 0 10rpx 0;
+  /* background-color: rgb(236, 236, 236); */
 }
 
-.WifiInfo {
-  margin: 0px 0px 10px;
-  /* background: darkgray; */
-  align-self: stretch;
+.plate-item {
+  width: 25vw;
+  display: flex;
   align-items: center;
-  display: inline;
+  flex-direction: column;
 }
 
-.WifiInfo text {
-  margin: 10px 0px 10px;
+.plate-img {
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
 }
 
-.WifiInfo image {
-  margin: 0px 0px 0px 10px;
-  display: inline-block;
-  height: 40rpx;
-  width: 40rpx;
+.plate-img image {
+  width: 100rpx;
+  height: 100rpx;
 }
 
-.result {
-  margin: 10px;
-  padding: 10px;
-  /* background: springgreen; */
-  align-items: center;
-  border-style: solid;
-  
+.plate-info {
+  font-size: 27rpx;
+text-align: center;
 }

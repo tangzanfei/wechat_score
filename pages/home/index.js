@@ -63,25 +63,18 @@ Page({
   Scan: function () {
     var that = this;
     if (app.globalData.userInfo) {
-    wx.scanCode({
-      onlyFromCamera: true,
-      success(res) {
-        console.log(res);
-        that.setData({
-          qrcode: res.result,
-        });
-        // that.checkIn();
-      }
-    });
-  }else{
-    wx.switchTab({
-      url: '/pages/mine/index',
-    });
-    wx.showToast({
-      title: '请先登录',
-    })
-  }
-},
+      wx.navigateTo({
+        url: '/pages/home/SignIn/index',
+      });
+    } else {
+      wx.switchTab({
+        url: '/pages/mine/index',
+      });
+      wx.showToast({
+        title: '请先登录',
+      })
+    }
+  },
 
   // 更新wifi
   getWifiInfo: function () {
@@ -123,4 +116,7 @@ Page({
       }
     })
   },
+
+
+
 })
