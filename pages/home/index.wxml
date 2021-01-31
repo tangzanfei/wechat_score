@@ -4,9 +4,9 @@
     <navigator url="/pages/home/Scan/index" hover-class="navigator-hover" class="plate-item">
       <view class="plate-img">
         <image src="../../images/scan1.png"></image>
-         <text class="plate-info">
-        扫码打卡
-       </text>
+        <text class="plate-info">
+          扫码打卡
+        </text>
       </view>
 
     </navigator>
@@ -14,10 +14,28 @@
       <view class="plate-img">
         <image src="../../images/wifi1.png"></image>
         <text class="plate-info">
-        wifi打卡
-       </text>
+          wifi打卡
+        </text>
       </view>
     </navigator>
+  </view>
+  <view class="plate">
+    <navigator url="/pages/home/Scan/index" hover-class="navigator-hover" class="plate-item">
+      <view class="plate-img">
+        <image src="../../images/order_nochose.png"></image>
+        <text class="plate-info">
+          支部活动
+        </text>
+      </view>
 
+    </navigator>
+    <navigator url="/pages/home/Wifi/index" hover-class="navigator-hover" class="plate-item">
+      <view class="plate-img">
+        <image src="../../images/wifi1.png"></image>
+        <text class="plate-info">
+          加分审批
+        </text>
+      </view>
+    </navigator>
   </view>
 </view>

@@ -17,71 +17,88 @@ Page({
     checkTime: '2020年10月14日15:43:16',
   },
 
-    // 扫码打卡
-    Scan: function () {
-      var that = this;
-      if (app.globalData.userInfo) {
-        wx.scanCode({
-          onlyFromCamera: true,
-          success(res) {
-            console.log(res);
+  // 扫码打卡
+  Scan: function () {
+    var that = this;
+    if (app.globalData.userInfo) {
+      wx.scanCode({
+        onlyFromCamera: true,
+        success(res) {
+          console.log(res);
+          if (res.errMsg == "scanCode:ok") {
             that.setData({
               qrcode: res.result,
             });
-            // that.checkIn();
+            that.checkIn(qrcode);
+          } else {
+            //识别二维码失败，应该很少这个情况
           }
-        });
-      } else {
-        wx.switchTab({
-          url: '/pages/mine/index',
-        });
-        wx.showToast({
-          title: '请先登录',
-        })
-      }
-    },
-  
-    // 更新wifi
-    getWifiInfo: function () {
-      var that = this;
-      wx.startWifi({
-        success(res) {
-          console.log(res.errMsg, 'wifi初始化成功')
-        },
-        fail: function (res) {
-          console.log(res.errMsg, 'wifi初始化失败')
         }
       });
-      wx.getConnectedWifi({
-        success: function (e) {
-          wx.showToast({
-            title: '获取wifi成功',
-            icon: 'success'
-          });
-          console.log(e.wifi.BSSID);
-          that.setData({
-            wifissid: e.wifi.SSID,
-            wifiBssid: e.wifi.BSSID
-          })
-        },
-        fail: res => {
-          console.log(res);
-          switch (res.errCode) {
-            case 12005:
-              that.setData({
-                wifissid: "请先打开手机的wifi开关"
-              });
-              break;
-            case 12006:
-              that.setData({
-                wifissid: "请先打开手机的“位置信息”开关"
-              });
-              break;
-          }
-        }
+    } else {
+      wx.switchTab({
+        url: '/pages/mine/index',
+      });
+      wx.showToast({
+        title: '请先登录',
       })
-    },
-    
+    }
+  },
+
+  //二维码发给服务器打卡
+  checkIn: function (qrcode) {
+    wx.request({
+      url: app.globalData.url+'check/CheckByScanQrcode?code='+qrcode+'&sessionkey='+app.globalData.sessionKey,
+      method: 'POST',
+      success:function(res){
+
+      },
+      fail:function(err){
+
+      }
+    })
+  },
+  // 更新wifi
+  getWifiInfo: function () {
+    var that = this;
+    wx.startWifi({
+      success(res) {
+        console.log(res.errMsg, 'wifi初始化成功')
+      },
+      fail: function (res) {
+        console.log(res.errMsg, 'wifi初始化失败')
+      }
+    });
+    wx.getConnectedWifi({
+      success: function (e) {
+        wx.showToast({
+          title: '获取wifi成功',
+          icon: 'success'
+        });
+        console.log(e.wifi.BSSID);
+        that.setData({
+          wifissid: e.wifi.SSID,
+          wifiBssid: e.wifi.BSSID
+        })
+      },
+      fail: res => {
+        console.log(res);
+        switch (res.errCode) {
+          case 12005:
+            that.setData({
+              wifissid: "请先打开手机的wifi开关"
+            });
+            break;
+          case 12006:
+            that.setData({
+              wifissid: "请先打开手机的“位置信息”开关"
+            });
+            break;
+        }
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
