@@ -23,6 +23,7 @@ App({
             if(resultdata.Code==0){
               that.globalData.openIdKey=resultdata.Data.OpenIdKey;
               that.globalData.sessionKey=resultdata.Data.SessionKey;
+              that.globalData.isAdmin=resultdata.Data.IsAdmin
             }
         },
         fail:function(re){
@@ -60,5 +61,6 @@ App({
     code:'',
     openIdKey:'',
     sessionKey:'',
+    isAdmin:false,
   }
 })

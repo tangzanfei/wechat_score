@@ -19,12 +19,12 @@
       </view>
     </navigator>
   </view>
-  <view class="plate">
+  <view wx:if="{{hasUserInfo && IsAdmin}}" class="plate">
     <navigator url="/pages/home/Scan/index" hover-class="navigator-hover" class="plate-item">
       <view class="plate-img">
         <image src="../../images/order_nochose.png"></image>
         <text class="plate-info">
-          支部活动
+          发起活动
         </text>
       </view>
 

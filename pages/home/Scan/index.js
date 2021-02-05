@@ -1,5 +1,6 @@
 // pages/home/SignIn/index.js
 const app = getApp()
+var util = require('../../../utils/util.js');
 Page({
 
   /**
@@ -29,7 +30,7 @@ Page({
             that.setData({
               qrcode: res.result,
             });
-            that.checkIn(qrcode);
+            that.checkIn(that.data.qrcode);
           } else {
             //识别二维码失败，应该很少这个情况
           }
@@ -47,11 +48,27 @@ Page({
 
   //二维码发给服务器打卡
   checkIn: function (qrcode) {
+    var _this=this;
     wx.request({
       url: app.globalData.url+'check/CheckByScanQrcode?code='+qrcode+'&sessionkey='+app.globalData.sessionKey,
       method: 'POST',
       success:function(res){
-
+        var result=res.data;
+        if (result.Code==0) {
+          let  date = util.formatTime(result.Data.CheckTime);
+          _this.setData({
+            checkResult:result.Msg,
+            checkLocation:result.Data.CheckPoint ,
+            checkTime:date,
+          })
+        }
+        else{
+          _this.setData({
+            checkResult:result.Msg,
+            checkLocation:"" ,
+            checkTime:"",
+          })
+        }
       },
       fail:function(err){
 

@@ -4,10 +4,10 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    IsAdmin:false,
     wifissid: '未检测到wifi',
     wifiBssid: '',
     qrcode: '',
@@ -25,6 +25,7 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
+        IsAdmin:app.globalData.isAdmin,
         hasUserInfo: true
       })
     } else if (this.data.canIUse) {
@@ -33,6 +34,7 @@ Page({
       app.userInfoReadyCallback = res => {
         this.setData({
           userInfo: res.userInfo,
+          IsAdmin:app.globalData.isAdmin,
           hasUserInfo: true
         })
       }
@@ -43,6 +45,7 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
+            IsAdmin:app.globalData.isAdmin,
             hasUserInfo: true
           })
         }
