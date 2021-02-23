@@ -1,2 +1,48 @@
 <!--pages/home/LaunchAction/index.wxml-->
-<text>pages/home/LaunchAction/index.wxml</text>
+
+<view class="page-body">
+  <view class="page-section">
+    <view class="weui-cells__title">活动标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" maxlength="10" bindinput="bindKeyInput" placeholder="输入本次活动的标题" />
+      </view>
+    </view>
+  </view>
+
+
+  <view class="page-section">
+    <view class="weui-cells__title">活动地点</view>
+    <view class="weui-cells weui-cells_after-title">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="weui-cell weui-cell_input">
+          活动地点：{{array[index]}}
+        </view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="weui-cells__title">活动开始时间</view>
+    <view class="weui-cells weui-cells_after-title">
+      <picker class="weui-btn" mode="date" value="{{begindate}}" start="2021-02-01" end="2030-12-31"
+        bindchange="bindbeginDateChange">
+        <button type="default">{{begindate}}</button>
+      </picker>
+    </view>
+  </view>
+
+  <view class="page-section">
+    <view class="weui-cells__title">活动结束日期</view>
+    <view class="weui-cells weui-cells_after-title">
+      <picker class="weui-btn" mode="date" value="{{enddate}}" start="2021-02-01" end="2030-12-31"
+        bindchange="bindendDateChange">
+        <button type="default" bindtap="Submit">{{enddate}}</button>
+      </picker>
+    </view>
+  </view>
+
+
+  <button type="primary" bindtap="OnSubmit">发起</button>
+
+</view>

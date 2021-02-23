@@ -57,10 +57,11 @@ App({
   globalData: {
     userInfo: null,
     // url: 'http://192.168.0.100/api/',
+    // url: 'https://localhost:44354/api/',
     url: 'https://partyscore.tangzanfei.cn/api/',
     code:'',
     openIdKey:'',
     sessionKey:'',
-    isAdmin:false,
+    isAdmin:true,
   }
 })

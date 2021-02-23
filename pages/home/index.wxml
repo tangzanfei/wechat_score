@@ -20,7 +20,7 @@
     </navigator>
   </view>
   <view wx:if="{{hasUserInfo && IsAdmin}}" class="plate">
-    <navigator url="/pages/home/Scan/index" hover-class="navigator-hover" class="plate-item">
+    <navigator url="/pages/home/LaunchAction/index" hover-class="navigator-hover" class="plate-item">
       <view class="plate-img">
         <image src="../../images/order_nochose.png"></image>
         <text class="plate-info">
@@ -31,7 +31,7 @@
     </navigator>
     <navigator url="/pages/home/Wifi/index" hover-class="navigator-hover" class="plate-item">
       <view class="plate-img">
-        <image src="../../images/wifi1.png"></image>
+        <image src="../../images/shenpi.png"></image>
         <text class="plate-info">
           加分审批
         </text>
