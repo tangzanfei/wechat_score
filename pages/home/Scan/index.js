@@ -13,9 +13,9 @@ Page({
     wifissid: '未检测到wifi',
     wifiBssid: '',
     qrcode: '',
-    checkResult: '打卡成功',
-    checkLocation: '组织部主题党日打卡点',
-    checkTime: '2020年10月14日15:43:16',
+    checkResult: '',
+    checkLocation: '',
+    checkTime: '',
   },
 
   // 扫码打卡
@@ -103,12 +103,20 @@ Page({
         switch (res.errCode) {
           case 12005:
             that.setData({
-              wifissid: "请先打开手机的wifi开关"
+              wifissid: "wifi未打开"
+            });
+            wx.showToast({
+              title: '请打开wifi',
+
             });
             break;
           case 12006:
             that.setData({
-              wifissid: "请先打开手机的“位置信息”开关"
+              wifissid: "“位置信息”开关未打开"
+            });
+            wx.showToast({
+              title: '请打开位置',
+
             });
             break;
         }

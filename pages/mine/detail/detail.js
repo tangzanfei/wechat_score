@@ -8,18 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list01: [
-      { item_id: "9月13日 三会一课缺签 -10" }, { item_id: "9月19日 主题党日缺签 -10" }, { item_id: "9月23日 三会一课缺签 -10" },
-    ],
-    list02: [
-      { item_id: "9月3日 凯旋城 +10" }, { item_id: "9月30日 翡翠湾社区 +10" },
-    ],
-    list03: [
-      { item_id: "9月10日 郴州日报投稿 +10" },
-    ],
-    list04: [
-      { item_id: 11 }, { item_id: 11 }, { item_id: 11 }
-    ],
+    list01: [],
+    list02: [ ],
+    list03: [],
 
     isNoBAction: true,
     totalScore: 60,
@@ -27,7 +18,7 @@ Page({
     usualScore: 20,
     bonusScore: 10,
     // 展开折叠
-    selectedFlag: [false, false, false, false],
+    selectedFlag: [false, false, false],
 
   },
   // 展开折叠选择  
@@ -68,7 +59,7 @@ Page({
           if (resultdata.Code == 2) {
             //本月无志愿打卡记录
             _this.setData({
-              list02: [],
+              list02: []
             });
           }
         }
@@ -99,12 +90,15 @@ Page({
             var item = { item_id: date + " " + data.CheckPoint + "缺签 -10" };
             datalist.push(item);
           }
-          _this.setData({ list01: datalist });
+          _this.setData({
+             list01: datalist,
+             isNoBAction:false
+             });
         } else {
           if (resultdata.Code == 2) {
             //本月无支部活动
             _this.setData({
-              list01: [{ item_id: "本月无支部活动，默认满分" }],
+              list01: [{ item_id: "本月支部活动均已参加" }],
               isNoBAction: true,
             });
 

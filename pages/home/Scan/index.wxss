@@ -39,5 +39,5 @@
   /* background: springgreen; */
   align-items: center;
   border-style: solid;
-  
+  min-width: 500rpx;
 }

@@ -1,2 +1,28 @@
 <!--pages/home/Wifi/index.wxml-->
-<text>pages/home/Wifi/index.wxml</text>
+<view class="container">
+  <button>
+    <image class="btnRect" bindtap="Scan" src="../../../images/wifi.png"> </image>
+    <view>Wifi感应打卡</view>
+  </button>
+  <view>
+  <view class="WifiInfo">      
+      <text>当前连接WIFI:{{wifissid}}</text>
+      <!-- <icon class="icon-box-img" type="waiting" size="15"></icon> -->
+      <image src="../../../images/refresh1.png" bindtap="getWifiInfo"></image>
+    </view>
+  </view>
+  <text class="tips">Tips:打卡前需要连接打卡点的wifi，并开启手机位置服务</text>
+
+  <view class="result">
+
+    <view>
+      <text>打卡结果:{{checkResult}}</text>
+    </view>
+    <view>
+      <text>打卡地点:{{checkLocation}}</text>
+    </view>
+    <view>
+      <text>打卡时间:{{checkTime}}</text>
+    </view>
+  </view>
+</view>
