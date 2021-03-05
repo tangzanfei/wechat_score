@@ -4,17 +4,7 @@
     <image class="btnRect" bindtap="Scan" src="../../../images/scan.png"> </image>
     <view>扫码打卡</view>
   </button>
-  <view>
-  <view class="WifiInfo">      
-      <text>WIFI:{{wifissid}}</text>
-      <!-- <icon class="icon-box-img" type="waiting" size="15"></icon> -->
-      <image src="../../../images/refresh1.png" bindtap="getWifiInfo"></image>
-    </view>
-  </view>
-  <text class="tips">Tips:打卡前需要连接打卡点的wifi，并开启手机位置服务</text>
-
   <view class="result">
-
     <view>
       <text>打卡结果:{{checkResult}}</text>
     </view>
