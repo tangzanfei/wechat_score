@@ -4,6 +4,7 @@
     "pages/home/Scan/index",
     "pages/home/Wifi/index",
     "pages/home/LaunchAction/index",
+    "pages/home/ConfirmScore/index",
     "pages/mine/index",
     "pages/mine/detail/detail",
     "pages/mine/addScore/addScore",
@@ -11,15 +12,15 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#AA0000",
+    "navigationBarTitleText": "党建积分小系统",
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "color": "#b7b7b7",
     "selectedColor": "#F38D76",
     "borderStyle": "white",
-    "backgroundColor": "#f5f5f5",
+    "backgroundColor": "#AA0000",
     "list": [
       {
         "selectedIconPath": "images/home_chose.png",

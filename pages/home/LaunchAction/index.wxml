@@ -23,7 +23,7 @@
   </view>
 
   <view class="page-section">
-    <view class="weui-cells__title">活动开始时间</view>
+    <view class="weui-cells__title">活动日期</view>
     <view class="weui-cells weui-cells_after-title">
       <picker class="weui-btn" mode="date" value="{{begindate}}" start="2021-02-01" end="2030-12-31"
         bindchange="bindbeginDateChange">
@@ -32,15 +32,7 @@
     </view>
   </view>
 
-  <view class="page-section">
-    <view class="weui-cells__title">活动结束日期</view>
-    <view class="weui-cells weui-cells_after-title">
-      <picker class="weui-btn" mode="date" value="{{enddate}}" start="2021-02-01" end="2030-12-31"
-        bindchange="bindendDateChange">
-        <button type="default" bindtap="Submit">{{enddate}}</button>
-      </picker>
-    </view>
-  </view>
+
 
 
   <button type="primary" bindtap="OnSubmit">发起</button>

@@ -62,7 +62,7 @@ Page({
       data: JSON.stringify({
         Session: app.globalData.sessionKey,
         BeginTime: that.data.begindate,
-        EndTime: that.data.enddate,
+        EndTime: that.data.begindate,
         Title: that.data.title,
         PointID: pointid,
       }),

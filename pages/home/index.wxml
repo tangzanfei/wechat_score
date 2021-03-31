@@ -29,7 +29,7 @@
       </view>
 
     </navigator>
-    <navigator url="/pages/home/Wifi/index" hover-class="navigator-hover" class="plate-item">
+    <navigator url="/pages/home/ConfirmScore/index" hover-class="navigator-hover" class="plate-item">
       <view class="plate-img">
         <image src="../../images/shenpi.png"></image>
         <text class="plate-info">
