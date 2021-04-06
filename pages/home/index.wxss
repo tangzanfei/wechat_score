@@ -1,5 +1,29 @@
 /**index.wxss**/
 
+/* 顶部用户样式 */
+.userinfo {
+  background-color:#AA0000;
+  padding:30rpx;
+}
+
+.weui-media-box__thumb-avatar {
+  display: block;
+  margin: 0 auto;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 3px solid grey;
+}
+
+.userinfo-nickname {
+  display: block;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+
+/* 版面样式 */
 .ImgRect {
   height: 100rpx;
   width: 100rpx;

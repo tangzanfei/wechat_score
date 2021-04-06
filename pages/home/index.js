@@ -8,12 +8,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     IsAdmin:false,
-    wifissid: '未检测到wifi',
-    wifiBssid: '',
-    qrcode: '',
-    checkResult: '打卡成功',
-    checkLocation: '组织部主题党日打卡点',
-    checkTime: '2020年10月14日15:43:16',
+    username:'',
   },
   //事件处理函数
   bindViewTap: function () {
@@ -61,65 +56,5 @@ Page({
       hasUserInfo: true
     })
   },
-
-  // 扫码打卡
-  Scan: function () {
-    var that = this;
-    if (app.globalData.userInfo) {
-      wx.navigateTo({
-        url: '/pages/home/SignIn/index',
-      });
-    } else {
-      wx.switchTab({
-        url: '/pages/mine/index',
-      });
-      wx.showToast({
-        title: '请先登录',
-      })
-    }
-  },
-
-  // 更新wifi
-  getWifiInfo: function () {
-    var that = this;
-    wx.startWifi({
-      success(res) {
-        console.log(res.errMsg, 'wifi初始化成功')
-      },
-      fail: function (res) {
-        console.log(res.errMsg, 'wifi初始化失败')
-      }
-    });
-    wx.getConnectedWifi({
-      success: function (e) {
-        wx.showToast({
-          title: '获取wifi成功',
-          icon: 'success'
-        });
-        console.log(e.wifi.BSSID);
-        that.setData({
-          wifissid: e.wifi.SSID,
-          wifiBssid: e.wifi.BSSID
-        })
-      },
-      fail: res => {
-        console.log(res);
-        switch (res.errCode) {
-          case 12005:
-            that.setData({
-              wifissid: "请先打开手机的wifi开关"
-            });
-            break;
-          case 12006:
-            that.setData({
-              wifissid: "请先打开手机的“位置信息”开关"
-            });
-            break;
-        }
-      }
-    })
-  },
-
-
 
 })

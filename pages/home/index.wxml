@@ -1,4 +1,18 @@
 <!--index.wxml-->
+<view class="userinfo" >
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+  <block wx:else>
+    <view  class="weui-media-box weui-media-box_appmsg">
+      <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb-avatar" src="{{userInfo.avatarUrl}}"  />
+      </view>
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="userinfo-nickname" style="color: #fff">{{userInfo.nickName}}</view>
+        <view class="weui-media-box__desc" style="color: #fff">组织部第一支部{{score}}</view>
+      </view>
+    </view>
+  </block>
+</view>
 <view class="container">
   <view class="plate">
     <navigator url="/pages/home/Scan/index" hover-class="navigator-hover" class="plate-item">

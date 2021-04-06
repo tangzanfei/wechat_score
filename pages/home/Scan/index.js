@@ -75,54 +75,7 @@ Page({
       }
     })
   },
-  // 更新wifi
-  getWifiInfo: function () {
-    var that = this;
-    wx.startWifi({
-      success(res) {
-        console.log(res.errMsg, 'wifi初始化成功')
-      },
-      fail: function (res) {
-        console.log(res.errMsg, 'wifi初始化失败')
-      }
-    });
-    wx.getConnectedWifi({
-      success: function (e) {
-        wx.showToast({
-          title: '获取wifi成功',
-          icon: 'success'
-        });
-        console.log(e.wifi.BSSID);
-        that.setData({
-          wifissid: e.wifi.SSID,
-          wifiBssid: e.wifi.BSSID
-        })
-      },
-      fail: res => {
-        console.log(res);
-        switch (res.errCode) {
-          case 12005:
-            that.setData({
-              wifissid: "wifi未打开"
-            });
-            wx.showToast({
-              title: '请打开wifi',
 
-            });
-            break;
-          case 12006:
-            that.setData({
-              wifissid: "“位置信息”开关未打开"
-            });
-            wx.showToast({
-              title: '请打开位置',
-
-            });
-            break;
-        }
-      }
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载

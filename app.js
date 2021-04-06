@@ -62,6 +62,8 @@ App({
     code:'',
     openIdKey:'',
     sessionKey:'',
+    username:'游客',
+    branch:'暂无党组织',
     isAdmin:true,
   }
 })
